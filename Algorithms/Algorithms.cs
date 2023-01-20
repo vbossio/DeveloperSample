@@ -35,26 +35,6 @@ namespace DeveloperSample.Algorithms
 
         public static string FormatSeparators(params string[] items)
         {
-            //string formattedItems = "";
-            //var totalCount = items.Length;
-            //if (totalCount == 1)
-            //{
-            //    return items[0];
-            //}
-            //for (int count = 0; count < totalCount; count++)
-            //{
-            //    // if 2nd to last item then append with "and"
-            //    if (count + 2 == totalCount)
-            //    {
-            //        formattedItems += items[count] + " and ";
-            //    } else if (count + 1 == totalCount)  // if last item just append value
-            //    {
-            //        formattedItems += items[count];
-            //    } else
-            //    {
-            //        formattedItems += items[count] + ", "; // otherwise append value and comma
-            //    }
-            //}
 
             // use special character (Unicode 0) as initial delimiter in case there are commas in the strings we are joining
             var specialDelimiter = "\0";
@@ -64,6 +44,7 @@ namespace DeveloperSample.Algorithms
             if (lastPosition > 0) {
                 formattedItems = formattedItems.Remove(lastPosition, specialDelimiter.Length).Insert(lastPosition, " and ");
             }
+            // replace remaining special characters with ", "
             formattedItems = formattedItems.Replace(specialDelimiter, ", ");
             return formattedItems;
         }
