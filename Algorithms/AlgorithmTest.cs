@@ -40,6 +40,9 @@ namespace DeveloperSample.Algorithms
             Assert.Equal("a, b, c and d", Algorithms.FormatSeparators("a", "b", "c", "d"));
             Assert.Equal("Me,first, Me,second and Me,third/last", Algorithms.FormatSeparators("Me,first", "Me,second", "Me,third/last"));
             Assert.Equal("a,b,c and d,e,f", Algorithms.FormatSeparators("a,b,c", "d,e,f"));
+            Assert.Equal(",", Algorithms.FormatSeparators(","));
+            Assert.Equal(", and ,", Algorithms.FormatSeparators(",",","));
+            Assert.Equal(",, , and ,", Algorithms.FormatSeparators(",", ",",","));
         }
     }
 }

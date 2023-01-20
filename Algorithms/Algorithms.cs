@@ -35,26 +35,36 @@ namespace DeveloperSample.Algorithms
 
         public static string FormatSeparators(params string[] items)
         {
-            string formattedItems = "";
-            var totalCount = items.Length;
-            if (totalCount == 1)
-            {
-                return items[0];
+            //string formattedItems = "";
+            //var totalCount = items.Length;
+            //if (totalCount == 1)
+            //{
+            //    return items[0];
+            //}
+            //for (int count = 0; count < totalCount; count++)
+            //{
+            //    // if 2nd to last item then append with "and"
+            //    if (count + 2 == totalCount)
+            //    {
+            //        formattedItems += items[count] + " and ";
+            //    } else if (count + 1 == totalCount)  // if last item just append value
+            //    {
+            //        formattedItems += items[count];
+            //    } else
+            //    {
+            //        formattedItems += items[count] + ", "; // otherwise append value and comma
+            //    }
+            //}
+
+            // use special character (Unicode 0) as initial delimiter in case there are commas in the strings we are joining
+            var specialDelimiter = "\0";
+            var formattedItems = String.Join(specialDelimiter, items);
+            // replace the last special delimiter with " and "
+            int lastPosition = formattedItems.LastIndexOf(specialDelimiter, StringComparison.OrdinalIgnoreCase);
+            if (lastPosition > 0) {
+                formattedItems = formattedItems.Remove(lastPosition, specialDelimiter.Length).Insert(lastPosition, " and ");
             }
-            for (int count = 0; count < totalCount; count++)
-            {
-                // if 2nd to last item then append with "and"
-                if (count + 2 == totalCount)
-                {
-                    formattedItems += items[count] + " and ";
-                } else if (count + 1 == totalCount)  // if last item just append value
-                {
-                    formattedItems += items[count];
-                } else
-                {
-                    formattedItems += items[count] + ", "; // otherwise append value and comma
-                }
-            }
+            formattedItems = formattedItems.Replace(specialDelimiter, ", ");
             return formattedItems;
         }
     }
