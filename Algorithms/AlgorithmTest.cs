@@ -9,8 +9,9 @@ namespace DeveloperSample.Algorithms
         public void CanGetFactorial()
         {
             Assert.Equal(24, Algorithms.GetFactorial(4));
+            Assert.Equal(1, Algorithms.GetFactorial(1));
             Assert.Equal(3628800, Algorithms.GetFactorial(10));
-            Assert.Equal(479001600, Algorithms.GetFactorial(12));
+            Assert.Equal(479001600, Algorithms.GetFactorial(12)); // largest value before exceeds int max
         }
         [Fact]
         public void ExceptionFactorialLessThanOne()
