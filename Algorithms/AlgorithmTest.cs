@@ -28,6 +28,9 @@ namespace DeveloperSample.Algorithms
             var exception = Record.Exception(() => Algorithms.GetFactorial(13));
             Assert.NotNull(exception);
             Assert.IsType<OverflowException>(exception);
+            exception = Record.Exception(() => Algorithms.GetFactorial(int.MaxValue));
+            Assert.NotNull(exception);
+            Assert.IsType<OverflowException>(exception);
         }
 
         [Fact]
